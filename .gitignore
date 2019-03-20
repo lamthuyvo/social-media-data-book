@@ -40,3 +40,4 @@ Thumbs.db
 #########
 venv/
 chapter_materials/chapter10/data/iranian_tweets_csv_hashed.csv
+chapter_materials/chapter08_09/data/askscience_submissions.csv
