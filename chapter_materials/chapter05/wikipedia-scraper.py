@@ -14,7 +14,7 @@ rows = []
 # open the web site
 urls = ["https://en.wikipedia.org/wiki/Category:Women_computer_scientists", "https://en.wikipedia.org/w/index.php?title=Category:Women_computer_scientists&pagefrom=Lin%2C+Ming+C.%0AMing+C.+Lin#mw-pages"]
 
-def scrapeContent(url):
+def scrape_content(url):
     print('waiting for 5 seconds!')
     time.sleep(5)
     # add headers
@@ -44,7 +44,7 @@ def scrapeContent(url):
 
 
 for url in urls:
-    scrapeContent(url)
+    scrape_content(url)
 
 # make a new csv into which we will write all the rows
 with open('all-women-computer-scientists.csv', 'w+') as csvfile:

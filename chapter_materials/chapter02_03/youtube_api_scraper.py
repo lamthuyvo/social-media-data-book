@@ -9,7 +9,7 @@ channel_id = 'UCJFp8uSYCjXOMnkUyb3CQ3Q'
 channel_id2 ='UCpko_-a4wgz2u_DgDgd9fqA'
 youtube_api_key  ='' # <-- your API key goes in between these two quotation marks!
 
-def makeCSV(page_id):
+def make_CSV(page_id):
     base = 'https://www.googleapis.com/youtube/v3/search?'
     fields = '&part=snippet&channelId='
     api_key = '&key=' + youtube_api_key
@@ -28,7 +28,12 @@ def makeCSV(page_id):
         has_another_page = True
         while has_another_page:
             for video in videos['items']:
-                video_data_row  = [ video['snippet']['publishedAt'], video['snippet']['title'], video['snippet']['description'], video['snippet']['thumbnails']['default']['url']]
+                video_data_row  = [
+                                    video['snippet']['publishedAt'],
+                                    video['snippet']['title'],
+                                    video['snippet']['description'],
+                                    video['snippet']['thumbnails']['default']['url']
+                                    ]
                 csv_writer.writerow(video_data_row)
             if 'nextPageToken' in videos.keys():
                 next_page_url = api_url + "&pageToken=" +videos['nextPageToken']
@@ -38,4 +43,5 @@ def makeCSV(page_id):
                 print('no more videos!')
                 has_another_page = False
 
-makeCSV(channel_id)
+make_CSV(channel_id)
+make_CSV(channel_id2)
