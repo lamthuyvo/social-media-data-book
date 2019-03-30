@@ -1,4 +1,4 @@
-#Import our modules or packages that we will need to scrape a website
+#Import our libraries that we will need to scrape a website
 from bs4 import BeautifulSoup
 import requests
 import csv
