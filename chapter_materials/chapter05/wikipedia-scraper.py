@@ -17,8 +17,7 @@ rows = []
 urls = ["https://en.wikipedia.org/wiki/Category:Women_computer_scientists", "https://en.wikipedia.org/w/index.php?title=Category:Women_computer_scientists&pagefrom=Lin%2C+Ming+C.%0AMing+C.+Lin#mw-pages"]
 
 def scrape_content(url):
-    print("waiting for 5 seconds!")
-    time.sleep(5)
+    time.sleep(2)
     # add headers
     page = requests.get(url, headers= headers)
     page_content = page.content
