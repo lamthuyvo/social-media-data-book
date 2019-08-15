@@ -1,6 +1,5 @@
-# this is where we specify which parts of python and which libraries we may need
-import json
 import csv
+import json
 
 import requests
 
@@ -14,9 +13,6 @@ def make_CSV(page_id):
     fields = "&part=snippet&channelId="
     api_key = "&key=" + youtube_api_key
     api_url = base + fields + page_id + api_key
-
-    api_response = requests.get(api_url)
-    videos = json.loads(api_response.text.encode("ascii", "ignore")))
 
 
     with open("%syoutube_videos.csv" % channel_id, "w") as csv_file:
@@ -38,10 +34,12 @@ def make_CSV(page_id):
             if "nextPageToken" in videos.keys():
                 next_page_url = api_url + "&pageToken=" +videos["nextPageToken"]
                 next_page_posts = requests.get(next_page_url)
+
                 videos = json.loads(next_page_posts.text)
             else:
                 print("no more videos!")
                 has_another_page = False
 
-make_CSV(channel_id)
-make_CSV(channel_id2)
+
+make_csv(channel_id)
+make_csv(channel_id2)
