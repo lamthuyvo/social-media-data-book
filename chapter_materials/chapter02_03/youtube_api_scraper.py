@@ -8,11 +8,14 @@ channel_id = "UCJFp8uSYCjXOMnkUyb3CQ3Q"
 channel_id2 ="UCpko_-a4wgz2u_DgDgd9fqA"
 youtube_api_key  ="" # <-- your API key goes in between these two quotation marks!
 
-def make_CSV(page_id):
+def make_csv(page_id):
     base = "https://www.googleapis.com/youtube/v3/search?"
     fields = "&part=snippet&channelId="
     api_key = "&key=" + youtube_api_key
     api_url = base + fields + page_id + api_key
+
+    api_response = requests.get(api_url)
+    videos = json.loads(api_response.text)
 
 
     with open("%syoutube_videos.csv" % channel_id, "w") as csv_file:
