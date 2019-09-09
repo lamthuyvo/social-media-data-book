@@ -13,7 +13,6 @@ def make_csv(page_id):
     fields = "&part=snippet&channelId="
     api_key = "&key=" + youtube_api_key
     api_url = base + fields + page_id + api_key
-
     api_response = requests.get(api_url)
     videos = json.loads(api_response.text)
 
