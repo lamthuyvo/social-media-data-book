@@ -25,14 +25,15 @@ def make_csv(page_id):
                             "thumbnailurl"])
         has_another_page = True
         while has_another_page:
-            for video in videos["items"]:
-                video_data_row  = [
-                                    video["snippet"]["publishedAt"],
-                                    video["snippet"]["title"],
-                                    video["snippet"]["description"],
-                                    video["snippet"]["thumbnails"]["default"]["url"]
-                                    ]
-                csv_writer.writerow(video_data_row)
+            if videos.get("items") is not None:
+                for video in videos.get("items"):
+                    video_data_row  = [
+                                        video["snippet"]["publishedAt"],
+                                        video["snippet"]["title"],
+                                        video["snippet"]["description"],
+                                        video["snippet"]["thumbnails"]["default"]["url"]
+                                        ]
+                    csv_writer.writerow(video_data_row)
             if "nextPageToken" in videos.keys():
                 next_page_url = api_url + "&pageToken=" +videos["nextPageToken"]
                 next_page_posts = requests.get(next_page_url)
