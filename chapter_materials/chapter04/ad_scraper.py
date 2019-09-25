@@ -11,10 +11,10 @@ with open("%s/ads/advertisers_you've_interacted_with.html" % foldername) as page
 
     for item in ad_list:
         advert = item.find("div", class_="_2let").get_text()
-        metadata = item.find("div", class_="_2lem").get_text()
+        timeaccessed = item.find("div", class_="_2lem").get_text()
 
         row = { "advert": advert,
-                "metadata": metadata
+                "timeaccessed": timeaccessed
               }
         rows.append(row)
 
@@ -22,7 +22,7 @@ with open("%s/ads/advertisers_you've_interacted_with.html" % foldername) as page
 # make a new csv into which we will write all the rows
 with open("%s-all-advertisers.csv" % foldername, "w+") as csvfile:
     # these are the header names:
-    fieldnames = ["advert", "metadata"]
+    fieldnames = ["advert", "timeaccessed"]
     # this creates your csv
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     # this writes in the first row, which are the headers
